@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wind.deilyFitness.dao.record.FitRecordMapper" >
+  <resultMap id="BaseResultMap" type="org.wind.deilyFitness.entity.record.FitRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="action_code" property="actionCode" jdbcType="VARCHAR" />
+    <result column="action_name" property="actionName" jdbcType="VARCHAR" />
+    <result column="temp" property="temp" jdbcType="VARCHAR" />
+    <result column="red_point" property="redPoint" jdbcType="CHAR" />
+    <result column="insanity" property="insanity" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_at, update_at, action_code, action_name, temp, red_point, insanity,user_id,weight
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fit_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fit_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wind.deilyFitness.entity.record.FitRecord" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into fit_record (id, create_at, update_at, 
+      action_code, action_name, temp, 
+      red_point, insanity,user_id,weight)
+    values (#{id,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, 
+      #{actionCode,jdbcType=VARCHAR}, #{actionName,jdbcType=VARCHAR}, #{temp,jdbcType=VARCHAR}, 
+      #{redPoint,jdbcType=CHAR}, #{insanity,jdbcType=CHAR},#{userId,jdbcType=INTEGER},#{weight,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="org.wind.deilyFitness.entity.record.FitRecord" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into fit_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="actionCode != null" >
+        action_code,
+      </if>
+      <if test="actionName != null" >
+        action_name,
+      </if>
+      <if test="temp != null" >
+        temp,
+      </if>
+      <if test="redPoint != null" >
+        red_point,
+      </if>
+      <if test="insanity != null" >
+        insanity,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actionCode != null" >
+        #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionName != null" >
+        #{actionName,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="redPoint != null" >
+        #{redPoint,jdbcType=CHAR},
+      </if>
+      <if test="insanity != null" >
+        #{insanity,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wind.deilyFitness.entity.record.FitRecord" >
+    update fit_record
+    <set >
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actionCode != null" >
+        action_code = #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionName != null" >
+        action_name = #{actionName,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="redPoint != null" >
+        red_point = #{redPoint,jdbcType=CHAR},
+      </if>
+      <if test="insanity != null" >
+        insanity = #{insanity,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wind.deilyFitness.entity.record.FitRecord" >
+    update fit_record
+    set create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      action_code = #{actionCode,jdbcType=VARCHAR},
+      action_name = #{actionName,jdbcType=VARCHAR},
+      temp = #{temp,jdbcType=VARCHAR},
+      red_point = #{redPoint,jdbcType=CHAR},
+      insanity = #{insanity,jdbcType=CHAR},
+      user_id=#{userId,jdbcType=INTEGER},
+      weight=#{weight,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getRecordByUserIdAndTime" resultType="FitRecordVo" parameterType="FitRecordForm" >
+    select
+    <include refid="Base_Column_List" />
+    from fit_record
+    where user_id = #{userId}
+    and create_at like CONCAT('%',#{dayTime},'%' )
+  </select>
+
+
+  <select id="getFitRecords" resultType="FitRecordVo" parameterType="FitRecordForm">
+
+    select
+    <include refid="Base_Column_List" />
+    from fit_record
+    where user_id = #{userId}
+  </select>
+  <!--     and create_at > #{dayBefore}
+    and create_at <![CDATA[< ]]> #{dayAfter} -->
+
+</mapper>

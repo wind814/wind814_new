@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- mybatis 配置  -->
+    <!-- 1）配置 数据库连接相关属性  -->
+    <context:property-placeholder location="classpath:*.properties"/>
+
+    <!-- 2）数据库连接池配置 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 配置 连接池属性 -->
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!-- c3p0 连接池私有属性 -->
+        <property name="maxPoolSize" value="30"/>
+        <property name="minPoolSize" value="10"/>
+        <!-- 关闭连接后不自动提交 默认就应该是false-->
+        <property name="autoCommitOnClose" value="false"/>
+        <property name="checkoutTimeout" value="1000"/>
+        <!-- 当获取连接池失败 重试次数 -->
+        <property name="acquireRetryAttempts" value="2"/>
+    </bean>
+
+    <!-- 约定大于配置 -->
+    <!-- 3）配置 sqlSessionFactory 对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <!-- 注入 连接池对象 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置 mybatis 全局配置文件 mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 扫描 entity 包，使用别名 多个包  在 value里面加；分割-->
+        <property name="typeAliasesPackage" value="org.wind.deilyFitness.entity"/>
+        <!-- 扫描sql配置文件：mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+    </bean>
+
+    <!-- 4) 配置扫描dao接口，动态实现Dao接口，注入到spring容器中   以前项目是扫描mapper文件 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入 sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 给出需要扫描的dao接口包-->
+        <property name="basePackage" value="org.wind.deilyFitness.dao"/>
+
+    </bean>
+
+    <!-- redis 配置  -->
+    <!-- 1) redis连接相关属性  -->
+    <!--<context:property-placeholder location="classpath:redis.properties"/>-->
+    <!-- 2) redis处理类  -->
+    <bean id="redisDao" class="org.wind.deilyFitness.dao.RedisDao">
+        <constructor-arg index="0" value="${host}"/>
+        <constructor-arg index="1" value="${port}"/>
+    </bean>
+
+
+</beans>

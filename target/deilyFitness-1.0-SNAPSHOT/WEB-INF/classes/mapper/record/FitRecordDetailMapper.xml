@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wind.deilyFitness.dao.record.FitRecordDetailMapper">
+  <resultMap id="BaseResultMap" type="org.wind.deilyFitness.entity.record.FitRecordDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="action_tyep_code" jdbcType="VARCHAR" property="actionTypeCode" />
+    <result column="action_type_name" jdbcType="VARCHAR" property="actionTypeName" />
+    <result column="action_detail_code" jdbcType="VARCHAR" property="actionDetailCode" />
+    <result column="action_detail_name" jdbcType="VARCHAR" property="actionDetailName" />
+    <result column="frequency" jdbcType="INTEGER" property="frequency" />
+    <result column="kg" jdbcType="DOUBLE" property="kg" />
+    <result column="temp" jdbcType="VARCHAR" property="temp" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="fit_record_id" jdbcType="INTEGER" property="fitRecordId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, action_type_code, action_type_name, action_detail_code, action_detail_name, frequency,
+    kg, temp, type, fit_record_id,num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fit_record_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fit_record_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wind.deilyFitness.entity.record.FitRecordDetail">
+    insert into fit_record_detail (id, action_type_code, action_type_name,
+      action_detail_code, action_detail_name, frequency, 
+      kg, temp, type, fit_record_id,num
+      )
+    values (#{id,jdbcType=INTEGER}, #{actionTypeCode,jdbcType=VARCHAR}, #{actionTypeName,jdbcType=VARCHAR},
+      #{actionDetailCode,jdbcType=VARCHAR}, #{actionDetailName,jdbcType=VARCHAR}, #{frequency,jdbcType=INTEGER}, 
+      #{kg,jdbcType=DOUBLE}, #{temp,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{fitRecordId,jdbcType=INTEGER}
+      , #{num,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.wind.deilyFitness.entity.record.FitRecordDetail">
+    insert into fit_record_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="actionTypeCode != null">
+        action_type_code,
+      </if>
+      <if test="actionTypeName != null">
+        action_type_name,
+      </if>
+      <if test="actionDetailCode != null">
+        action_detail_code,
+      </if>
+      <if test="actionDetailName != null">
+        action_detail_name,
+      </if>
+      <if test="frequency != null">
+        frequency,
+      </if>
+      <if test="kg != null">
+        kg,
+      </if>
+      <if test="temp != null">
+        temp,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="fitRecordId != null">
+        fit_record_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actionTypeCode != null">
+        #{actionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionTypeName != null">
+        #{actionTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailCode != null">
+        #{actionDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailName != null">
+        #{actionDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="kg != null">
+        #{kg,jdbcType=DOUBLE},
+      </if>
+      <if test="temp != null">
+        #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="fitRecordId != null">
+        #{fitRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wind.deilyFitness.entity.record.FitRecordDetail">
+    update fit_record_detail
+    <set>
+      <if test="actionTypeCode != null">
+        action_type_code = #{actionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionTypeName != null">
+        action_type_name = #{actionTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailCode != null">
+        action_detail_code = #{actionDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailName != null">
+        action_detail_name = #{actionDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="kg != null">
+        kg = #{kg,jdbcType=DOUBLE},
+      </if>
+      <if test="temp != null">
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="fitRecordId != null">
+        fit_record_id = #{fitRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wind.deilyFitness.entity.record.FitRecordDetail">
+    update fit_record_detail
+    set action_type_code = #{actionTypeCode,jdbcType=VARCHAR},
+      action_type_name = #{actionTypeName,jdbcType=VARCHAR},
+      action_detail_code = #{actionDetailCode,jdbcType=VARCHAR},
+      action_detail_name = #{actionDetailName,jdbcType=VARCHAR},
+      frequency = #{frequency,jdbcType=INTEGER},
+      kg = #{kg,jdbcType=DOUBLE},
+      temp = #{temp,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      fit_record_id = #{fitRecordId,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="doFitRecordDetailSearch" parameterType="FitRecordDetailForm" resultType="FitRecordDetailVo">
+    select
+    <include refid="Base_Column_List" />
+    from fit_record_detail where fit_record_id = #{fitRecordId}
+  </select>
+</mapper>

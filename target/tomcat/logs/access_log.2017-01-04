@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /login/toLogin HTTP/1.1" 200 4859 http-bio-8080-exec-1 1915
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/css/style/style.css HTTP/1.1" 304 - http-bio-8080-exec-4 7
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 - http-bio-8080-exec-2 6
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/css/form-elements.css HTTP/1.1" 304 - http-bio-8080-exec-3 6
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/js/jquery.backstretch.min.js HTTP/1.1" 304 - http-bio-8080-exec-6 5
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /javascripts/login/login.js HTTP/1.1" 200 554 http-bio-8080-exec-7 6
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/js/scripts.js HTTP/1.1" 200 559 http-bio-8080-exec-5 6
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/img/backgrounds/5.jpg HTTP/1.1" 304 - http-bio-8080-exec-7 4
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/img/backgrounds/7.jpg HTTP/1.1" 304 - http-bio-8080-exec-5 4
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/img/backgrounds/8.jpg HTTP/1.1" 304 - http-bio-8080-exec-8 4
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/img/backgrounds/6.jpg HTTP/1.1" 304 - http-bio-8080-exec-10 4
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/img/backgrounds/4.jpg HTTP/1.1" 304 - http-bio-8080-exec-2 4
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:13 +0800] "GET /assets/ico/favicon.png HTTP/1.1" 404 995 http-bio-8080-exec-2 2
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:28 +0800] "POST /login/doLogin HTTP/1.1" 200 5726 http-bio-8080-exec-2 554
+0:0:0:0:0:0:0:1 - - [04/Jan/2017:21:49:28 +0800] "GET /login/favicon.ico HTTP/1.1" 404 985 http-bio-8080-exec-2 2

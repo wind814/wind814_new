@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+        ">
+
+
+        <!-- 1,service
+             扫描service包下所有的使用注解的类型 -->
+        <context:component-scan base-package="org.wind.deilyFitness.service"/>
+        <!-- 2,transaction
+            配置事务管理器
+            使用hibernate  需要使用jdbc事务管理器
+            mybatis  使用spring默认的事务管理器
+        -->
+        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <property name="dataSource" ref="dataSource"/>
+        </bean>
+        <!--<tx:annotation-driver transaction-maneger="transactionManager" />-->
+
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+
+</beans>

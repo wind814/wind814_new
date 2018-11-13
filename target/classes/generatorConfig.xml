@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="/Users/wind/Desktop/JAVA/project_code/mysql-connector-java-5.1.22-bin.jar"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/fitness"
+                        userId="root" password="">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="org.wind.deilyFitness.entity.record.dietRecords" targetProject="/Users/wind/Desktop/JAVA/intellij_workspace/wind814_Deily_Fitness/src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper.record.dietRecords" targetProject="/Users/wind/Desktop/JAVA/intellij_workspace/wind814_Deily_Fitness/src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.wind.deilyFitness.dao.record.dietRecords"  targetProject="/Users/wind/Desktop/JAVA/intellij_workspace/wind814_Deily_Fitness/src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+
+        <table tableName="fit_diet_records" domainObjectName="FitDietRecords" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+
+        <!--
+         <table tableName="cbs_category" domainObjectName="Category" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+           <property name="useActualColumnNames" value="false"/>
+         </table>
+
+          <table tableName="cbs_material" domainObjectName="Material" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+           <property name="useActualColumnNames" value="false"/>
+         </table>
+
+       <table tableName="cbs_sys_menus" domainObjectName="Menu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+           <property name="useActualColumnNames" value="false"/>
+         </table>
+
+         <table tableName="cbs_sys_modules" domainObjectName="Module" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+           <property name="useActualColumnNames" value="false"/>
+         </table>
+          <table tableName="cbs_sys_buttons" domainObjectName="Button" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+           <property name="useActualColumnNames" value="false"/>
+         </table>  -->
+
+        <!-- <table tableName="cbs_area" domainObjectName="Area" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+          </table>
+
+          <table tableName="cbs_dict" domainObjectName="Dict" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+          </table>
+          <table tableName="cbs_dict_word" domainObjectName="DictWord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+          </table>  -->
+    </context>
+
+</generatorConfiguration> 

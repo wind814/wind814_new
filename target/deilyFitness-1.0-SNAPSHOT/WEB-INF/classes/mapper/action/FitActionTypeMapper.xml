@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wind.deilyFitness.dao.action.FitActionTypeMapper" >
+  <resultMap id="BaseResultMap" type="org.wind.deilyFitness.entity.action.FitActionType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="action_id" property="actionId" jdbcType="INTEGER" />
+    <result column="action_type_name" property="actionTypeName" jdbcType="VARCHAR" />
+    <result column="action_type_code" property="actionTypeCode" jdbcType="VARCHAR" />
+    <result column="temp" property="temp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, action_id, action_type_name, action_type_code, temp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fit_action_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fit_action_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wind.deilyFitness.entity.action.FitActionType" >
+    insert into fit_action_type (id, action_id, action_type_name, 
+      action_type_code, temp)
+    values (#{id,jdbcType=INTEGER}, #{actionId,jdbcType=INTEGER}, #{actionTypeName,jdbcType=VARCHAR}, 
+      #{actionTypeCode,jdbcType=VARCHAR}, #{temp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.wind.deilyFitness.entity.action.FitActionType" >
+    insert into fit_action_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="actionId != null" >
+        action_id,
+      </if>
+      <if test="actionTypeName != null" >
+        action_type_name,
+      </if>
+      <if test="actionTypeCode != null" >
+        action_type_code,
+      </if>
+      <if test="temp != null" >
+        temp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actionId != null" >
+        #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="actionTypeName != null" >
+        #{actionTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionTypeCode != null" >
+        #{actionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wind.deilyFitness.entity.action.FitActionType" >
+    update fit_action_type
+    <set >
+      <if test="actionId != null" >
+        action_id = #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="actionTypeName != null" >
+        action_type_name = #{actionTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionTypeCode != null" >
+        action_type_code = #{actionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wind.deilyFitness.entity.action.FitActionType" >
+    update fit_action_type
+    set action_id = #{actionId,jdbcType=INTEGER},
+      action_type_name = #{actionTypeName,jdbcType=VARCHAR},
+      action_type_code = #{actionTypeCode,jdbcType=VARCHAR},
+      temp = #{temp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getActionTypeByActionCode" resultType="FitActionTypeVo" parameterType="FitActionTypeForm">
+    select
+    fat.id,
+    fat.action_type_name,
+    fat.action_type_code
+    from fit_action_type fat
+    left join fit_action fa on  fa.id = fat.action_id
+    where fa.action_code = #{actionId}
+    order by fat.id asc
+  </select>
+</mapper>

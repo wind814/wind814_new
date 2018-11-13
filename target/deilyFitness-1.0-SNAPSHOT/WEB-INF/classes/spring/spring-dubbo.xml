@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+   default-lazy-init="true">
+
+    <!--<dubbo:application name="deily_fitness" />-->
+    <!--<dubbo:registry address="zookeeper://127.0.0.1:2181" />-->
+    <!--<dubbo:protocol port="20882" />-->
+
+    <!--<bean id="demoServiceImpl" class="org.wind.deilyFitness.remoteService.impl.DemoServiceImpl" />-->
+    <!--<dubbo:service interface="org.wind.deilyFitness.remoteService.DemoService" ref="demoServiceImpl" executes="35"  timeout="1200000"/>-->
+
+    <dubbo:application name="deily_fitness" />
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+    <dubbo:reference id="demoService" interface="org.wind.deilyFitness.remoteService.DemoService"  />
+
+</beans>

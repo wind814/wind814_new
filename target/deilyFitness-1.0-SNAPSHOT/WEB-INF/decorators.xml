@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/jsp/default">
+    <excludes>
+        <pattern>/assets/*</pattern>
+        <pattern>/javascripts/*</pattern>
+        <pattern>/**/login</pattern>
+        <pattern>/**/dologin</pattern>
+        <pattern>/**/logout</pattern>
+        <pattern>/fckeditor/*</pattern>
+        <pattern>/*ajax=true*</pattern>
+        <pattern>*.html</pattern>
+        <pattern>*ajax*</pattern>
+        <pattern>/WEB-INF/views/product/e_list.jsp</pattern>
+
+        <pattern>/WEB-INF/views/companies/company-e-single-problem.jsp</pattern>
+        <pattern>/WEB-INF/exception.jsp</pattern>
+        <pattern>/login/*</pattern>
+    </excludes>
+
+	<decorator name="main" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>
+

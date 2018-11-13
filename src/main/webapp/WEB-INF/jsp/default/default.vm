@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>采编审站群管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />  
+    	<!-- BEGIN GLOBAL MANDATORY STYLES -->     
+    	
+	<link href="$base/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+	<!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN PAGE LEVEL PLUGIN STYLES --> 
+	<link rel="stylesheet" type="text/css" href="$base/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+	<!-- END PAGE LEVEL PLUGIN STYLES -->
+	<!-- BEGIN THEME STYLES -->
+	<link href="/assets/css/pages/error.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/themes/default.css" rel="stylesheet" type="text/css"/>
+	
+	<link href="$base/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+	<link href="$base/javascripts/zTree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css"/>
+	<!-- 下拉框带搜索 -->
+    <link href="$base/assets/plugins/select2/select2.css" rel="stylesheet" type="text/css" >
+	<link href="$base/assets/plugins/select2/select2-metronic.css" rel="stylesheet" type="text/css" >
+	<link href="$base/assets/plugins/select2/select2-bootstrap.css" rel="stylesheet" type="text/css" >
+    <!-- 上传控件-->
+    <link href="$base/javascripts/uploadify/uploadify.css" rel="stylesheet" type="text/css" >
+	<!-- html5 上传 -->
+	<link href="$base/javascripts/uploadify/html5/Huploadify.css" rel="stylesheet" type="text/css" >
+	<!-- END THEME STYLES -->
+	
+	<script src="$base/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="$base/javascripts/jqueryvalidate/jquery.validate.js" type="text/javascript"></script>
+	<script src="$base/javascripts/jqueryvalidate/jquery.validate-custom.js" type="text/javascript"></script>
+	<script src="$base/javascripts/zTree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+	<script src="$base/javascripts/zTree/jquery.ztree.exhide-3.4.js" type="text/javascript"></script>
+	<script src="$base/javascripts/zTree/mytree.js" type="text/javascript"></script>
+	<script src="$base/javascripts/jqueryvalidate/messages_zh.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/select2/select2.min.js" type="text/javascript" ></script>
+	<script src="$base/assets/plugins/bootbox/bootbox.js"  type="text/javascript" ></script>
+	<script src="$base/javascripts/uploadify/jquery.uploadify.min.js" type="text/javascript" ></script>
+	<!-- html5上传 -->
+	<script src="$base/javascripts/uploadify/html5/jquery.Huploadify.js" type="text/javascript" ></script>
+	<script type="text/javascript">
+	 	var pathHeader = "$base";
+	</script>
+	<!-- 前置公共js -->
+	<script src="$base/javascripts/precommon.js" type="text/javascript"></script>
+	<!-- 下拉框js(zhanggy-b) -->
+	<script type="text/javascript" src="$base/javascripts/jquery-select.js"></script>
+  </head>
+
+  <body class="page-header-fixed page-sidebar-fixed">
+	<!-- BEGIN HEADER -->   
+	<div class="header navbar navbar-inverse navbar-fixed-top ">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="header-inner">
+			<!-- BEGIN LOGO -->  
+			<a class="navbar-brand" href="/home">
+			<b style="margin-left: 30px;color: #fff">采编审系统</b>
+			</a>
+			<!-- END LOGO -->
+			<!-- BEGIN RESPONSIVE MENU TOGGLER --> 
+			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="$base/assets/img/menu-toggler.png" alt="收起左边栏" />
+			</a> 
+			<!-- END RESPONSIVE MENU TOGGLER -->
+			<!-- BEGIN TOP NAVIGATION MENU -->
+			<ul class="nav navbar-nav pull-right">
+				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<li class="dropdown">
+					<a href="$base/message/export_file_list" target="_blank" >
+					<span class="badge">下载</span>
+					</a>
+				</li>
+				<li class="dropdown user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username">${current_user.name}</span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li class="divider"></li>
+						
+						<li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i>全屏</a></li>
+						<li><a href="/$current_user.site.code/$current_user.modeType/logout"><i class="fa fa-key"></i>退出</a></li>
+					</ul>
+				</li>
+				
+				<!-- END USER LOGIN DROPDOWN -->
+			</ul>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->       
+		#parse("$base/layout/left.vm")
+			<!-- END SIDEBAR MENU -->
+		</div>
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN PAGE -->
+		
+		<div class="page-content">
+		${body}
+
+            <!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER 
+	<!--<div class="footer" >
+		<div class="footer-inner" >
+			 
+		</div>
+	</div>-->
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->   
+	<!--[if lt IE 9]>
+	<script src="assets/plugins/respond.min.js"></script>
+	<script src="assets/plugins/excanvas.min.js"></script> 
+	<![endif]-->   
+	<script src="$base/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>   
+	<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+	<script src="$base/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="$base/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+	<script src="$base/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	
+	<script src="$base/assets/plugins/flot/jquery.flot.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/flot/jquery.flot.resize.js" type="text/javascript"></script>
+	
+	<script src="$base/assets/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+	<script src="$base/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>     
+
+	<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+	<script src="$base/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+   <script type="text/javascript" src="$base/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="$base/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	 
+
+	<script src="$base/assets/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript" ></script>
+	<script src="$base/assets/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript" ></script>
+	<script src="$base/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript" ></script>
+	<script src="$base/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript" ></script>
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="$base/assets/scripts/app.js" type="text/javascript"></script>
+	<script src="$base/assets/scripts/index.js" type="text/javascript"></script>
+	<script src="$base/assets/scripts/tasks.js" type="text/javascript"></script>        
+	<script src="$base/javascripts/form-date-pickers.js" type="text/javascript"></script>   
+	<!-- END PAGE LEVEL SCRIPTS -->  
+	<script src="$base/javascripts/time/WdatePicker.js" type="text/javascript"></script>
+	<script>
+		jQuery(document).ready(function() { 
+		
+		     
+		   App.init(); // initlayout and core plugins
+		   Index.init();
+		   Index.initCalendar(); // init index page's custom scripts
+		   Index.initDashboardDaterange();
+		   Index.initIntro();
+		   FormDatePickers.init();
+					});
+
+        function getSessionId(){
+            var c_name = 'JSESSIONID';
+            if(document.cookie.length>0){
+                c_start=document.cookie.indexOf(c_name + "=")
+                if(c_start!=-1){
+                    c_start=c_start + c_name.length+1
+                    c_end=document.cookie.indexOf(";",c_start)
+                    if(c_end==-1) c_end=document.cookie.length
+                    return unescape(document.cookie.substring(c_start,c_end));
+                }
+            }
+        }
+	</script>
+	<!-- 后置公共js -->
+		<script src="$base/javascripts/postcommon.js" type="text/javascript"></script>   
+	<!-- END JAVASCRIPTS -->
+</body>
+</html>
+	

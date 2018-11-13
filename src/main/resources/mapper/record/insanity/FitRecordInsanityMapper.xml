@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wind.deilyFitness.dao.record.insanity.FitRecordInsanityMapper" >
+  <resultMap id="BaseResultMap" type="org.wind.deilyFitness.entity.record.insanity.FitRecordInsanity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="insanity_code" property="insanityCode" jdbcType="VARCHAR" />
+    <result column="insanity_name" property="insanityName" jdbcType="VARCHAR" />
+    <result column="fit_record_id" property="fitRecordId" jdbcType="INTEGER" />
+    <result column="temp" property="temp" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, insanity_code, insanity_name, fit_record_id, temp, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fit_record_insanity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fit_record_insanity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wind.deilyFitness.entity.record.insanity.FitRecordInsanity" >
+    insert into fit_record_insanity (id, insanity_code, insanity_name, 
+      fit_record_id, temp, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{insanityCode,jdbcType=VARCHAR}, #{insanityName,jdbcType=VARCHAR}, 
+      #{fitRecordId,jdbcType=INTEGER}, #{temp,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.wind.deilyFitness.entity.record.insanity.FitRecordInsanity" >
+    insert into fit_record_insanity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insanityCode != null" >
+        insanity_code,
+      </if>
+      <if test="insanityName != null" >
+        insanity_name,
+      </if>
+      <if test="fitRecordId != null" >
+        fit_record_id,
+      </if>
+      <if test="temp != null" >
+        temp,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="insanityCode != null" >
+        #{insanityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insanityName != null" >
+        #{insanityName,jdbcType=VARCHAR},
+      </if>
+      <if test="fitRecordId != null" >
+        #{fitRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wind.deilyFitness.entity.record.insanity.FitRecordInsanity" >
+    update fit_record_insanity
+    <set >
+      <if test="insanityCode != null" >
+        insanity_code = #{insanityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insanityName != null" >
+        insanity_name = #{insanityName,jdbcType=VARCHAR},
+      </if>
+      <if test="fitRecordId != null" >
+        fit_record_id = #{fitRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wind.deilyFitness.entity.record.insanity.FitRecordInsanity" >
+    update fit_record_insanity
+    set insanity_code = #{insanityCode,jdbcType=VARCHAR},
+      insanity_name = #{insanityName,jdbcType=VARCHAR},
+      fit_record_id = #{fitRecordId,jdbcType=INTEGER},
+      temp = #{temp,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="doFitRecordInsanitySearch" parameterType="FitRecordInsanityForm" resultType="FitRecordInsanityVo">
+    select
+    <include refid="Base_Column_List" />
+    from fit_record_insanity
+    where fit_record_id=#{fitRecordId}
+  </select>
+</mapper>

@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [26/Jan/2018:15:37:21 +0800] "GET /login/toLogin HTTP/1.1" 200 4859 http-bio-8095-exec-1 178
+0:0:0:0:0:0:0:1 - - [26/Jan/2018:15:37:28 +0800] "POST /login/doLogin HTTP/1.1" 500 3872 http-bio-8095-exec-7 5293
+0:0:0:0:0:0:0:1 - - [26/Jan/2018:15:37:28 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8095-exec-2 18
+0:0:0:0:0:0:0:1 - - [26/Jan/2018:16:04:17 +0800] "POST /login/doLogin HTTP/1.1" 500 3872 http-bio-8095-exec-1 2792

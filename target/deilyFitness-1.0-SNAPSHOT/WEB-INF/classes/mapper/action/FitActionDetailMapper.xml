@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wind.deilyFitness.dao.action.FitActionDetailMapper">
+  <resultMap id="BaseResultMap" type="org.wind.deilyFitness.entity.action.FitActionDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="action_type_id" jdbcType="INTEGER" property="actionTypeId" />
+    <result column="action_detail_name" jdbcType="VARCHAR" property="actionDetailName" />
+    <result column="action_detail_code" jdbcType="VARCHAR" property="actionDetailCode" />
+    <result column="temp" jdbcType="VARCHAR" property="temp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, action_type_id, action_detail_name, action_detail_code, temp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fit_action_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fit_action_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.wind.deilyFitness.entity.action.FitActionDetail">
+    insert into fit_action_detail (id, action_type_id, action_detail_name, 
+      action_detail_code, temp)
+    values (#{id,jdbcType=INTEGER}, #{actionTypeId,jdbcType=INTEGER}, #{actionDetailName,jdbcType=VARCHAR}, 
+      #{actionDetailCode,jdbcType=VARCHAR}, #{temp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.wind.deilyFitness.entity.action.FitActionDetail">
+    insert into fit_action_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="actionTypeId != null">
+        action_type_id,
+      </if>
+      <if test="actionDetailName != null">
+        action_detail_name,
+      </if>
+      <if test="actionDetailCode != null">
+        action_detail_code,
+      </if>
+      <if test="temp != null">
+        temp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actionTypeId != null">
+        #{actionTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="actionDetailName != null">
+        #{actionDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailCode != null">
+        #{actionDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null">
+        #{temp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wind.deilyFitness.entity.action.FitActionDetail">
+    update fit_action_detail
+    <set>
+      <if test="actionTypeId != null">
+        action_type_id = #{actionTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="actionDetailName != null">
+        action_detail_name = #{actionDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="actionDetailCode != null">
+        action_detail_code = #{actionDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null">
+        temp = #{temp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wind.deilyFitness.entity.action.FitActionDetail">
+    update fit_action_detail
+    set action_type_id = #{actionTypeId,jdbcType=INTEGER},
+      action_detail_name = #{actionDetailName,jdbcType=VARCHAR},
+      action_detail_code = #{actionDetailCode,jdbcType=VARCHAR},
+      temp = #{temp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getFitActionTypeDetailList" resultType="FitActionDetailVo" parameterType="FitActionDetailForm">
+
+    select
+           fad.action_detail_code,
+           fad.action_detail_name,
+           fad.action_type_id
+    from fit_action_detail fad
+    left join fit_action_type fat on fat.id = fad.action_type_id
+    left join fit_action fa on fa.id = fat.action_id
+    where fa.id = #{actionId}
+
+  </select>
+</mapper>
